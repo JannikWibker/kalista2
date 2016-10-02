@@ -1,0 +1,26 @@
+{
+  "name": "kalista2",
+  "version": "2.0.1",
+  "description": "version 2 of my incomplete js framework, hopefully being a complete working framework soon",
+  "main": "kalista.js",
+  "scripts": {
+    "test": "./node_modules/.bin/eslint src/*",
+    "build": "./node_modules/webpack/bin/webpack.js -d",
+    "watch": "./node_modules/webpack/bin/webpack.js -d --watch"
+  },
+  "author": "Jannik Wibker",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.16.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.7.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "dependencies": {
+    "html-element": "^2.1.1"
+  }
+}
