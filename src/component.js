@@ -15,7 +15,7 @@ let component = (name, componentObject) => { // component creation (with compone
   if(!componentObject.onRender) {            // setting onRender if it isn't set
     componentObject.onRender = function() {}
   }
-  if(!componentObject.init) {
+  if(!componentObject.init) {                // setting init if it isn't set
     componentObject.init = function() {}
   }
   componentObject.init()                     // running the init of the component

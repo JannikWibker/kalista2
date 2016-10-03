@@ -1,7 +1,7 @@
 ### TODO LIST  ###
 
-- add protection level to caches (should be done)
-- middleware for cache
+- [x] add protection level to caches
+- [x] middleware for cache
 - use caches more often
 - view component hierarchy in a better way
 - diffing (I know, huge one :P)

@@ -21,6 +21,7 @@
     "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
-    "html-element": "^2.1.1"
+    "html-element": "^2.1.1",
+    "mime-types": "^2.1.12"
   }
 }

@@ -2,4 +2,6 @@ let diff = () => {
 
 }
 
-export default diff
+let vdom = {}
+
+export { diff }

@@ -5,38 +5,39 @@ import kalista_client from '../src/kalista_client'
 import kalista_server from '../src/kalista_server'
 
 let Test = kalista.component('Test2', {
-  init() { console.log(this)},
-  onMount() { console.log('mounted ' + this.name)},
-  onRender() { console.log('rendered ' + this.name)},
+  init() { /*console.log(this)*/ },
+  onMount() { /*console.log('mounted ' + this.name)*/ },
+  onRender() { /*console.log('rendered ' + this.name)*/ },
   render() {
     return (
       <div>
-        some text
+        <input type="text" />
+        <div>{ this.prop.class }</div>
       </div>
     )
   }
 })
 let Testcomponent = kalista.component('Test1', {
   init() {
-    console.log(this)
+    //console.log(this)
   },
   onMount() {
-    console.log('mounted ' + this.name)
+    //console.log('mounted ' + this.name)
   },
   onRender() {
-    console.log('rendered ' + this.name)
+    //console.log('rendered ' + this.name)
   },
   render() {
+    //console.log('rendered')
     return (
       <div>
         <div id="123">
           456
-          <Test />
+          <Test class="blub" />
         </div>
       </div>
     )
   }
 })
-
-//console.log(kalista_client.render(Testcomponent, document.querySelector('#app')))
-console.log(kalista_server.render(Testcomponent).outerHTML)
+console.log(kalista_client.render(<Testcomponent />, document.querySelector('#app')))
+//console.log(kalista_server.render(<Testcomponent class="123" />).outerHTML)

@@ -1,6 +1,6 @@
 // importing functions
 import dom from './dom.js'
-import diff from './diff.js'
+import { diff } from './diff.js'
 import render from './render.js'
 import component from './component.js'
 // assembling the kalista object
