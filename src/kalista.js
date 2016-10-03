@@ -12,4 +12,4 @@ let kalista = {
   component
 }
 // exporting kalista object
-export { kalista }
+export default kalista

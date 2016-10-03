@@ -15,3 +15,8 @@
 - error handling
 - syntax checking
 - production / development modes
+- server side stuff:
+  - general structure
+  - incoming requests / responses
+  - hook-in to client-side routing (shared code)
+  - sending render relevant data to the client

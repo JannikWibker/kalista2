@@ -1,6 +1,8 @@
 /** @jsx kalista.dom */
-import { kalista } from '../src/kalista'
+import kalista from '../src/kalista'
 import cache from '../src/cache.js'
+import kalista_client from '../src/kalista_client'
+import kalista_server from '../src/kalista_server'
 
 let Test = kalista.component('Test2', {
   init() { console.log(this)},
@@ -36,7 +38,5 @@ let Testcomponent = kalista.component('Test1', {
   }
 })
 
-//kalista.render(Testcomponent, document.querySelector('#app'))
-console.log(kalista.render(Testcomponent).outerHTML)
-cache.del('status')
-console.log(cache.read('status'))
+//console.log(kalista_client.render(Testcomponent, document.querySelector('#app')))
+console.log(kalista_server.render(Testcomponent).outerHTML)
