@@ -1,6 +1,6 @@
 {
   "name": "kalista2",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "version 2 of my incomplete js framework, hopefully being a complete working framework soon",
   "main": "kalista.js",
   "scripts": {
