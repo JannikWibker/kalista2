@@ -1,9 +1,21 @@
 let development = false
 
-let cache_to_console = (...messages) => {
-  if(development) {
-    console.log(...messages)
-  }
+let middleware = (...messages) => {
+  mw.forEach((item) => {
+    item(...messages)
+  })
+}
+
+let mw = [
+  (...messages) => { if(development) console.log(...messages) },
+]
+
+let registerMiddleware = (fn) => {
+  return mw.push(fn) - 1
+}
+
+let unregisterMiddleware = (id) => {
+  mw.splice(id, 1)
 }
 
 let caches = {      // the default caches
@@ -27,7 +39,7 @@ let cache_protected = { // different levels of protection (0: no protection, del
 }
 
 let write = (cache_name, ...values) => {  // adding to a cache (type of interaction based on cache type)
-  cache_to_console(...values)
+  middleware(...values)
   if(caches[cache_name] === undefined) {
     write('status', 'cache with the name ' + cache_name + ' does not exist ("CACHE:WRITE").')
     return false
@@ -56,7 +68,7 @@ let write = (cache_name, ...values) => {  // adding to a cache (type of interact
 }
 
 let change = (cache_name, location, value) => {
-  cache_to_console(location, value)
+  middleware(location, value)
   if(caches[cache_name] === undefined) {
     write('status', 'cache with the name ' + cache_name + ' does not exist ("CACHE:CHANGE").')
     return false
@@ -79,7 +91,7 @@ let change = (cache_name, location, value) => {
 
 let set = (cache_name, value) => {                      // setting the value of a complete cache
   if(caches[cache_name] === undefined) {                // (only if the cache has a protection level of less than 2)
-    cache_to_console(value)
+    middleware(value)
     write('status', 'cache with the name ' + cache_name + ' does not exist ("CACHE:SET").')
     return false
   } else if(cache_protected[cache_name] <= 1) {
@@ -127,7 +139,7 @@ let create = (cache_name, type='array') => {            // create a new cache (o
       write('status', 'type not available: ' + type + ' ("CACHE:CREATE").')
       return false
     }
-    cache_to_console('cache created: ' + cache_name)
+    middleware('cache created: ' + cache_name)
     return true
   }
 }
@@ -144,9 +156,5 @@ let del = (cache_name) => {                             // deleting a cache (pro
   }
 }
 
-let help = {                                            // listing all cache types and commands
-  types: ['array', 'object', 'number', 'string'],
-  methods: ['write', 'set', 'change', 'read', 'create, del'],
-}
 
-export default { write, set, change, read, create, del, help }
+export default { write, set, change, read, create, del, registerMiddleware, unregisterMiddleware }
